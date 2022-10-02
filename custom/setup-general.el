@@ -33,12 +33,17 @@
  )
 
 ;; company
+(require 'cc-mode)
 (use-package company
   :init
   (global-company-mode 1)
-  (delete 'company-semantic company-backends))
-;; (define-key c-mode-map  [(control tab)] 'company-complete)
-;; (define-key c++-mode-map  [(control tab)] 'company-complete)
+  ;; (delete 'company-semantic company-backends))
+  (define-key c-mode-map (kbd "C-c c") 'company-semantic)
+  (define-key c++-mode-map (kbd "C-c c") 'company-semantic)
+  ;; (define-key c-mode-map  [(control tab)] 'company-complete) ;; iTerm2 does not send C-tab
+  (define-key c-mode-map  (kbd "C-c t") 'company-complete)
+  ;; (define-key c++-mode-map  [(control tab)] 'company-complete)
+  (define-key c++-mode-map  (kbd "C-c t") 'company-complete))
 
 ;; Package: projejctile
 (use-package projectile
